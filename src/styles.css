@@ -1,0 +1,29 @@
+body {
+  text-align: center;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  width: calc(50% / 3 - 10px);
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.value {
+  font-size: 46px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.label {
+  font-size: 16px;
+  color: grey;
+}
+
+.clear-btn {
+  margin-top: 40px;
+}
