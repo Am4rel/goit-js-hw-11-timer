@@ -21,11 +21,7 @@ refs.chooseBtn.addEventListener("click", () => {
     if (timer) {
         intervalId = setInterval(() => {
             const fullTime = getTime(timer.targetDate);
-
-            refs.days.textContent = fullTime.days;
-            refs.hours.textContent = fullTime.hours;
-            refs.mins.textContent = fullTime.mins;
-            refs.secs.textContent = fullTime.secs;
+            renewVisibleTime(fullTime)
         }, 1000);
     }
 
@@ -50,16 +46,12 @@ function getTime(endTime) {
 function clearTimer() {
     if (intervalId) {
         clearInterval(intervalId)
-        console.log(`Interval ${intervalId} is cleared!`)
         intervalId = null;
     }
 
     refs.chooseBtn.removeAttribute("disabled")
-
-    refs.days.textContent = 0;
-    refs.hours.textContent = 0;
-    refs.mins.textContent = 0;
-    refs.secs.textContent = 0;
+    const newTime = { days: 0, hours: 0, mins: 0, secs: 0 };
+    renewVisibleTime(newTime)
 }
 
 function pickTheDate() {
@@ -70,4 +62,11 @@ function pickTheDate() {
     }
 
     return timer;
+}
+
+function renewVisibleTime({ days, hours, mins, secs }) {
+    refs.days.textContent = days;
+    refs.hours.textContent = hours;
+    refs.mins.textContent = mins;
+    refs.secs.textContent = secs;
 }
